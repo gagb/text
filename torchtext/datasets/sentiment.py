@@ -38,7 +38,7 @@ class SST(data.ZipDataset):
                 examples = [ex for line in f for ex in
                             data.Example.fromtree(line, fields, True)]
             else:
-                examples = [data.Example.fromtree(line, fields) for line in f]
+                examples = [data.Example.fromtree(line.decode("utf8"), fields) for line in f]
         super(SST, self).__init__(examples, fields, **kwargs)
 
     @classmethod
